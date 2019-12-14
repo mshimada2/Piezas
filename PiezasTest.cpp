@@ -42,13 +42,13 @@ TEST(PiezasTest, anotherIllegalDrop)
 TEST(PiezasTest, xTurn)
 {
   Piezas tBoard;
-  ASSERT_EQ(tBoard.dropPiece(1), X);
+  ASSERT_EQ(tBoard.dropPiece(2), X);
 }
 
 TEST(PiezasTest, oTurn)
 {
   Piezas tBoard;
-  ASSERT_EQ(tBoard.dropPiece(1), O);
+  ASSERT_EQ(tBoard.dropPiece(2), O);
 }
 
 //board checks
