@@ -77,7 +77,7 @@ TEST(PiezasTest, rowsFull)
 TEST(PiezasTest, reset)
 {
   Piezas tBoard;
-  tboard.dropPiece(1);
+  tBoard.dropPiece(1);
   tBoard.reset();
 
   ASSERT_EQ(tBoard.pieceAt(0,1), Blank);
