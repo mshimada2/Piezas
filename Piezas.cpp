@@ -22,6 +22,17 @@
 **/
 Piezas::Piezas()
 {
+  turn = X;
+
+  board.resize(BOARD_COLS, vector<Piece>(BOARD_ROWS));
+  for(int x = 0; x < 3 x++)
+  {
+    for(int y = 0; y < 4; y++)
+    {
+      board[x][y] = Blank;
+    }
+  }
+
 }
 
 /**
@@ -30,6 +41,15 @@ Piezas::Piezas()
 **/
 void Piezas::reset()
 {
+  for(int x = 0; x < 3; x++)
+  {
+    for(int y = 0; y < 4; y++)
+    {
+      board[x][y] = Blank;
+    }
+  }
+
+
 }
 
 /**
@@ -42,7 +62,54 @@ void Piezas::reset()
 **/ 
 Piece Piezas::dropPiece(int column)
 {
-    return Blank;
+  if(column > BOARD_ROWS || column < 0)
+  {
+    if(turn == X)
+    {
+      turn = O;
+    }
+
+    else
+    {
+      turn = X;
+    }
+
+    return Invalid;
+  }
+
+  for(int x = 0; x < 3; x++)
+  {
+    if(board[x][column] == Blank)
+    {
+      Piece temp = turn;
+      board[x][column] = turn;
+
+      if(turn == X)
+      {
+        turn = O;
+      }
+
+      else
+      {
+        turn = X
+      }
+
+      return temp;
+    }
+
+  }
+
+  if(turn == X)
+  {
+    turn = O;
+  }
+
+  else
+  {
+    turn = X;
+  }
+
+  return Blank;
 }
 
 /**
@@ -51,7 +118,12 @@ Piece Piezas::dropPiece(int column)
 **/
 Piece Piezas::pieceAt(int row, int column)
 {
-    return Blank;
+ if((row < 0 || row > 2) && (column < 0 || column > 3)) 
+ {
+   return Blank;
+ }
+
+ return board[row][column];
 }
 
 /**
@@ -65,5 +137,87 @@ Piece Piezas::pieceAt(int row, int column)
 **/
 Piece Piezas::gameState()
 {
+
+  int xPiece = 0;
+  int oPiece = 0;
+  int score = 0;
+
+  for(int x = 0; x < 3; x++)
+  {
+    for(int y = 0; y < 4; y++)
+    {
+      if(board[x][y] == Blank) 
+      {
+        return Invalid;
+      }
+    }
+  }
+
+  for(int x = 0; x < 3; x++)
+  {
+    for(int y = 0; y < 3; y++)
+    {
+      if(board[x][y] == board[x][y + 1])
+      {
+        score++;
+
+        if(board[x][y] == x && score > xPiece) 
+        {
+          xPiece = score;
+        }
+
+        else if(board[x][y] == 0 && score > oPiece)
+        {
+          oPiece = score;
+        }
+      }
+
+        else
+        {
+          score = 0;
+        }  
+     }
+  }
+
+  for(int y = 0; y < 4; y++)
+  {
+    for(int x = 0; x < 2; x++)
+    {
+      if(board[x][y] == board[x+1][y])
+      {
+         score++;
+
+      if(board[x][y] == X && score > xPiece) 
+      {
+        xPiece = score;
+      }
+
+      else if(board[x][y] == 0 && score > oPiece)
+      {
+        oPiece = score;
+      }
+      
+      }
+
+      else
+      {
+        score = 0;
+      }
+    }
+  }
+
+  if(xPiece == oPiece)
+  {
     return Blank;
+  }
+
+  else if(xPiece > oPiece)
+  {
+    return X;
+  }
+  else
+  {
+    return 0;
+  }
+
 }
