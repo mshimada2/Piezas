@@ -44,13 +44,13 @@ TEST(PiezasTest, xTurn)
   Piezas tBoard;
   ASSERT_EQ(tBoard.dropPiece(2), X);
 }
-
+/*
 TEST(PiezasTest, oTurn)
 {
   Piezas tBoard;
   ASSERT_EQ(tBoard.dropPiece(2), O);
 }
-
+*/
 //board checks
 TEST(PiezasTest, columnsFull)
 {
