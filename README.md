@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/mshimada2/Piezas.svg?branch=master)](https://travis-ci.org/mshimada2/Piezas)
+[![Coverage Status](https://coveralls.io/repos/github/mshimada2/Piezas/badge.svg?branch=master)](https://coveralls.io/github/mshimada2/Piezas?branch=master)
+
 # Piezas
 
 ## Associated Enumerated Types
