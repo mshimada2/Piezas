@@ -96,7 +96,7 @@ Piece Piezas::dropPiece(int column)
 
       else
       {
-        turn = X
+        turn = X;
       }
 
       return temp;
@@ -221,8 +221,10 @@ Piece Piezas::gameState()
     return X;
   }
   
-  
+  else
+  {
+
   return 0;
-  
+  }
 
 }
